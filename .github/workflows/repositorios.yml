@@ -99,15 +99,16 @@ jobs:
           git commit -m "docs: atualiza portfólio e badges dinamicamente" || echo "Sem mudanças no texto"
           git push
 
-      # 3. Executa a ferramenta de gráficos por último (ela se encarrega de salvar e enviar a imagem sozinha)
+# 3. Executa a ferramenta de gráficos por último
       - name: Gerar Gráfico de Linguagens
         uses: lowlighter/metrics@latest
         with:
           filename: linguagens.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: jpguska
-          template: classic
+          template: compact          # Muda para um layout de "card" mais agrupado e moderno
           base: ""
+          config_theme: dark         # Força o fundo escuro e letras brancas!
           plugin_languages: yes
           plugin_languages_ignored: html, css
           plugin_languages_details: percentage
