@@ -19,6 +19,9 @@ Tenho interesse na interseção entre tecnologia e outras ciências como físia,
 
 ## 📂 Portfólio
 
+<!-- START_SECTION:repos -->
+<!-- END_SECTION:repos -->
+
 ---
 
 ## 💻 Tecnologias e Ferramentas
