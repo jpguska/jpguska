@@ -1,6 +1,6 @@
 # Olá! Eu sou João Pedro Cunha Guska 👋
 
-Tenho interesse na interseção entre tecnologia e outras neurociência,. Nas horas vagas, longe dos teclados, sou praticante de jiu-jitsu.
+Tenho interesse na interseção entre tecnologia e outras ciências como físia, genética e neurociência. Nas horas vagas, longe dos teclados, sou praticante e estusiasta de artes marciais.
 
 * 🎓 **Engenharia de Computação UTFPR-TD** 
 * 💬 **Pergunte-me sobre:** Java, C/C++ e desenvolvimento de baixo nível.
