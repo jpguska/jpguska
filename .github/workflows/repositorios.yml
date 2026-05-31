@@ -108,12 +108,17 @@ jobs:
               f.write(content)
         shell: python
 
-      # 3. Salva o README alterado e o gráfico gerado
+# 3. Salva apenas o README (a imagem já foi salva pelo Metrics)
       - name: Salvar alterações no GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Adiciona tanto o README quanto a imagem gerada
-          git add README.md linguagens.svg
+          
+          # Sincroniza a máquina do robô com o GitHub para baixar o linguagens.svg que acabou de ser criado
+          git config pull.rebase true
+          git pull
+          
+          # Adiciona e salva apenas o README.md
+          git add README.md
           git commit -m "docs: atualiza portfólio, badges e gráfico dinamicamente" || echo "Sem mudanças"
           git push
