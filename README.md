@@ -1,4 +1,4 @@
-# Olá! Eu sou João Pedro Cunha Guska 👋
+# Olá! Eu sou João👋
 
 Tenho interesse na interseção entre tecnologia e outras ciências como física, genética e neurociência. Nas horas vagas, longe dos teclados, sou praticante e entusiasta de artes marciais.
 
