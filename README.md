@@ -11,26 +11,11 @@ Tenho interesse na interseção entre tecnologia e outras ciências como física
 
 <div align="center">
   <img src="estatisticas.svg" alt="Estatísticas do GitHub" height="180px"/>
-  <img src="linguagens.svg" alt="Linguagens Mais Usadas" height="180px"/>
 </div>
 
 ---
 
-## 📂 Portfólio
-
-<!-- START_SECTION:repos -->
-* **[pong-neat](https://github.com/jpguska/pong-neat)**: IA que joga Pong evoluída via NEAT (NeuroEvolution of Augmenting Topologies). Entrega da 2ª Competição de IA PPCI 2025.
-* **[cryptopals-challenges](https://github.com/jpguska/cryptopals-challenges)**: Soluções para os desafios de criptografia do Cryptopals.
-* **[java-hsm-crypto-examples](https://github.com/jpguska/java-hsm-crypto-examples)**: Integração criptográfica com HSMs da Dinamo Networks.
-* **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Compilador da linguagem Chemye++ focado nas etapas de análise léxica e sintática. Tem como base a linguagem C++.
-* **[crud-transporte-gov](https://github.com/jpguska/crud-transporte-gov)**: CRUD de transporte público implementado de duas formas: Sockets TCP com protocolo binário e RMI com Pyro5. Trabalho de Sistemas Distribuídos.
-* **[GLC](https://github.com/jpguska/GLC)**: Sem descrição.
-
-<!-- END_SECTION:repos -->
-
----
-
-## 💻 Tecnologias e Ferramentas
+## 💻 Linguagens e Ferramentas
 
 **Linguagens:**
 
@@ -52,3 +37,19 @@ Tenho interesse na interseção entre tecnologia e outras ciências como física
 ![Bison](https://img.shields.io/badge/Bison-A42E2B?style=for-the-badge&logo=gnu&logoColor=white)
 ![OpenGL](https://img.shields.io/badge/OpenGL-5586A4?style=for-the-badge&logo=opengl&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+
+---
+
+## 📂 Portfólio
+
+<!-- START_SECTION:repos -->
+* **[pong-neat](https://github.com/jpguska/pong-neat)**: IA que joga Pong evoluída via NEAT (NeuroEvolution of Augmenting Topologies). Entrega da 2ª Competição de IA PPCI 2025.
+* **[cryptopals-challenges](https://github.com/jpguska/cryptopals-challenges)**: Soluções para os desafios de criptografia do Cryptopals.
+* **[java-hsm-crypto-examples](https://github.com/jpguska/java-hsm-crypto-examples)**: Integração criptográfica com HSMs da Dinamo Networks.
+* **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Compilador da linguagem Chemye++ focado nas etapas de análise léxica e sintática. Tem como base a linguagem C++.
+* **[crud-transporte-gov](https://github.com/jpguska/crud-transporte-gov)**: CRUD de transporte público implementado de duas formas: Sockets TCP com protocolo binário e RMI com Pyro5. Trabalho de Sistemas Distribuídos.
+* **[GLC](https://github.com/jpguska/GLC)**: Sem descrição.
+
+<!-- END_SECTION:repos -->
+
+---
