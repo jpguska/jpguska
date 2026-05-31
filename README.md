@@ -1,8 +1,6 @@
 # Olá! Eu sou João Pedro Cunha Guska 👋
 
-Sou estudante de Engenharia de Computação pela **UTFPR-TD**, com forte interesse no desenvolvimento de sistemas back-end, algoritmos complexos e segurança. 
-
-Atualmente, estou imerso no desenvolvimento do meu TCC, focado na interseção entre tecnologia e neurociência, explorando a composição musical através da análise de sinais de EEG. Nas horas vagas, longe dos teclados, sou praticante de jiu-jitsu.
+Tenho interesse na interseção entre tecnologia e outras neurociência,. Nas horas vagas, longe dos teclados, sou praticante de jiu-jitsu.
 
 * 🎓 **Engenharia de Computação UTFPR-TD** 
 * 💬 **Pergunte-me sobre:** Java, C/C++ e desenvolvimento de baixo nível.
@@ -10,17 +8,16 @@ Atualmente, estou imerso no desenvolvimento do meu TCC, focado na interseção e
 
 ---
 
-## 📊 Visão Geral
+## 📊 GitHub Stats & Linguagens
 
 <div align="center">
+  <img src="estatisticas.svg" alt="Estatísticas do GitHub" height="180px"/>
   <img src="linguagens.svg" alt="Linguagens Mais Usadas" height="180px"/>
 </div>
 
 ---
 
-## 📂 Portfólio de Projetos
-
-*(Dica: Lembre-se de adicionar a descrição "Soluções e estudos em Go para os desafios de criptografia" lá na engrenagem do repositório cryptopals-challenges para o robô puxar!)*
+## 📂 Portfólio
 
 ---
 
