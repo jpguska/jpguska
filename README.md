@@ -19,6 +19,13 @@ Tenho interesse na interseção entre tecnologia e outras ciências como física
 ## 📂 Portfólio
 
 <!-- START_SECTION:repos -->
+* **[pong-neat](https://github.com/jpguska/pong-neat)**: IA que joga Pong evoluída via NEAT (NeuroEvolution of Augmenting Topologies). Entrega da 2ª Competição de IA PPCI 2025.
+* **[cryptopals-challenges](https://github.com/jpguska/cryptopals-challenges)**: Soluções para os desafios de criptografia do Cryptopals.
+* **[java-hsm-crypto-examples](https://github.com/jpguska/java-hsm-crypto-examples)**: Integração criptográfica com HSMs da Dinamo Networks.
+* **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Compilador da linguagem Chemye++ focado nas etapas de análise léxica e sintática. Tem como base a linguagem C++.
+* **[crud-transporte-gov](https://github.com/jpguska/crud-transporte-gov)**: CRUD de transporte público implementado de duas formas: Sockets TCP com protocolo binário e RMI com Pyro5. Trabalho de Sistemas Distribuídos.
+* **[GLC](https://github.com/jpguska/GLC)**: Sem descrição.
+
 <!-- END_SECTION:repos -->
 
 ---
@@ -28,6 +35,12 @@ Tenho interesse na interseção entre tecnologia e outras ciências como física
 **Linguagens:**
 
 <!-- START_SECTION:langs -->
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
 <!-- END_SECTION:langs -->
 
 **Ambiente, Infraestrutura & Frameworks:**
