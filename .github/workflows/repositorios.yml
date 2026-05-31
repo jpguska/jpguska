@@ -15,7 +15,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 1. Atualiza o Texto do README com segurança (Sem Regex)
+      # 1. Atualiza o Texto do README via Python (Método Seguro)
       - name: Atualizar README via Python
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +36,7 @@ jobs:
           with urllib.request.urlopen(req) as response:
               repos = json.loads(response.read().decode())
 
-          # --- PARTE 1: PORTFÓLIO ---
+          # --- PARTE 1: PORTFÓLIO (Últimos 6) ---
           markdown_repos = "\n"
           recent_repos = [r for r in repos if r['name'].lower() != "jpguska"][:6]
           
@@ -72,7 +72,7 @@ jobs:
                   markdown_badges += f"![{lang}](https://img.shields.io/badge/{safe_lang}-4D4D4D?style=for-the-badge)\n"
           markdown_badges += "\n"
 
-          # --- PARTE 3: INJETAR NO README (Método Seguro) ---
+          # --- PARTE 3: INJETAR NO README ---
           def replace_section(text, start_tag, end_tag, insertion):
               start_idx = text.find(start_tag)
               end_idx = text.find(end_tag)
@@ -99,16 +99,27 @@ jobs:
           git commit -m "docs: atualiza portfólio e badges dinamicamente" || echo "Sem mudanças no texto"
           git push
 
-# 3. Executa a ferramenta de gráficos por último
+      # 3. Gera o gráfico de linguagens
       - name: Gerar Gráfico de Linguagens
         uses: lowlighter/metrics@latest
         with:
           filename: linguagens.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: jpguska
-          template: compact          # Muda para um layout de "card" mais agrupado e moderno
+          template: compact
           base: ""
-          config_theme: dark         # Força o fundo escuro e letras brancas!
+          config_theme: dark
           plugin_languages: yes
           plugin_languages_ignored: html, css
           plugin_languages_details: percentage
+
+      # 4. Gera o gráfico de estatísticas
+      - name: Gerar Estatísticas Gerais
+        uses: lowlighter/metrics@latest
+        with:
+          filename: estatisticas.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: jpguska
+          template: compact
+          base: header, activity, community, repositories
+          config_theme: dark
