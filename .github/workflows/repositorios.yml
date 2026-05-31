@@ -25,7 +25,7 @@ jobs:
           import os
 
           token = os.environ.get('GITHUB_TOKEN')
-          url = "https://api.github.com/users/joaopedroguska/repos?type=owner&sort=updated&per_page=6"
+          url = "https://api.github.com/users/jpguska/repos?type=owner&sort=updated&per_page=6"
           
           req = urllib.request.Request(url, headers={
               'User-Agent': 'Mozilla/5.0',
@@ -38,7 +38,7 @@ jobs:
           markdown_list = "\n"
           for repo in repos:
               # Ignora o próprio repositório de perfil para não poluir a lista
-              if repo['name'].lower() != "joaopedroguska":
+              if repo['name'].lower() != "jpguska":
                   name = repo['name']
                   url_repo = repo['html_url']
                   desc = repo.get('description') or 'Sem descrição.'
