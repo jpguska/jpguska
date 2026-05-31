@@ -15,7 +15,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 1. Gera os SVGs PRIMEIRO (essas actions já commitam sozinhas)
+      # 1. Gera os SVGs PRIMEIRO (essas actions já commitam e pusham sozinhas)
       - name: Gerar Gráfico de Linguagens
         uses: lowlighter/metrics@latest
         with:
@@ -39,11 +39,14 @@ jobs:
           base: header, activity, community, repositories
           config_theme: dark
 
-      # 2. Puxa o que as actions acima commitaram, pra não dar conflito
+      # 2. Sincroniza com o remoto (os passos acima já pushearam)
       - name: Sincronizar com o remoto
-        run: git pull --rebase origin main
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
 
-      # 3. Agora sim, atualiza o README via Python
+      # 3. Atualiza o README via Python
       - name: Atualizar README via Python
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -111,18 +114,26 @@ jobs:
           with open('README.md', 'r', encoding='utf-8') as f:
               content = f.read()
 
-          content = replace_section(content, '<!-- START_SECTION:repos -->', '<!-- END_SECTION:repos -->', markdown_repos)
-          content = replace_section(content, '<!-- START_SECTION:langs -->', '<!-- END_SECTION:langs -->', markdown_badges)
+          content = replace_section(
+              content,
+              '<!-- START_SECTION:repos -->',
+              '<!-- END_SECTION:repos -->',
+              markdown_repos
+          )
+          content = replace_section(
+              content,
+              '<!-- START_SECTION:langs -->',
+              '<!-- END_SECTION:langs -->',
+              markdown_badges
+          )
 
           with open('README.md', 'w', encoding='utf-8') as f:
               f.write(content)
         shell: python
 
-      # 4. Commit final do README, agora sem conflito
+      # 4. Commit final do README (só commita se houver mudança)
       - name: Commit do README
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
           git diff --staged --quiet || git commit -m "docs: atualiza portfólio e badges dinamicamente"
           git push
