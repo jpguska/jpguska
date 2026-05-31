@@ -9,13 +9,41 @@ jobs:
   atualizar-tudo:
     runs-on: ubuntu-latest
     permissions:
-      contents: write 
+      contents: write
 
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 1. Atualiza o Texto do README via Python (Método Seguro)
+      # 1. Gera os SVGs PRIMEIRO (essas actions já commitam sozinhas)
+      - name: Gerar Gráfico de Linguagens
+        uses: lowlighter/metrics@latest
+        with:
+          filename: linguagens.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: jpguska
+          template: compact
+          base: ""
+          config_theme: dark
+          plugin_languages: yes
+          plugin_languages_ignored: html, css
+          plugin_languages_details: percentage
+
+      - name: Gerar Estatísticas Gerais
+        uses: lowlighter/metrics@latest
+        with:
+          filename: estatisticas.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: jpguska
+          template: compact
+          base: header, activity, community, repositories
+          config_theme: dark
+
+      # 2. Puxa o que as actions acima commitaram, pra não dar conflito
+      - name: Sincronizar com o remoto
+        run: git pull --rebase origin main
+
+      # 3. Agora sim, atualiza o README via Python
       - name: Atualizar README via Python
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,19 +55,19 @@ jobs:
 
           token = os.environ.get('GITHUB_TOKEN')
           url = "https://api.github.com/users/jpguska/repos?type=owner&sort=updated&per_page=100"
-          
+
           req = urllib.request.Request(url, headers={
               'User-Agent': 'Mozilla/5.0',
               'Authorization': f'token {token}'
           })
-          
+
           with urllib.request.urlopen(req) as response:
               repos = json.loads(response.read().decode())
 
           # --- PARTE 1: PORTFÓLIO (Últimos 6) ---
           markdown_repos = "\n"
           recent_repos = [r for r in repos if r['name'].lower() != "jpguska"][:6]
-          
+
           for repo in recent_repos:
               name = repo['name']
               url_repo = repo['html_url']
@@ -83,43 +111,18 @@ jobs:
           with open('README.md', 'r', encoding='utf-8') as f:
               content = f.read()
 
-          content = replace_section(content, '', '', markdown_repos)
-          content = replace_section(content, '', '', markdown_badges)
+          content = replace_section(content, '<!-- START_SECTION:repos -->', '<!-- END_SECTION:repos -->', markdown_repos)
+          content = replace_section(content, '<!-- START_SECTION:langs -->', '<!-- END_SECTION:langs -->', markdown_badges)
 
           with open('README.md', 'w', encoding='utf-8') as f:
               f.write(content)
         shell: python
 
-      # 2. Salva APENAS o texto modificado primeiro
-      - name: Commit do Texto
+      # 4. Commit final do README, agora sem conflito
+      - name: Commit do README
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "docs: atualiza portfólio e badges dinamicamente" || echo "Sem mudanças no texto"
+          git diff --staged --quiet || git commit -m "docs: atualiza portfólio e badges dinamicamente"
           git push
-
-      # 3. Gera o gráfico de linguagens
-      - name: Gerar Gráfico de Linguagens
-        uses: lowlighter/metrics@latest
-        with:
-          filename: linguagens.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: jpguska
-          template: compact
-          base: ""
-          config_theme: dark
-          plugin_languages: yes
-          plugin_languages_ignored: html, css
-          plugin_languages_details: percentage
-
-      # 4. Gera o gráfico de estatísticas
-      - name: Gerar Estatísticas Gerais
-        uses: lowlighter/metrics@latest
-        with:
-          filename: estatisticas.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: jpguska
-          template: compact
-          base: header, activity, community, repositories
-          config_theme: dark
