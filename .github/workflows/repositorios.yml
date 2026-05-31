@@ -22,9 +22,8 @@ jobs:
           filename: linguagens.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: jpguska
-          template: compact
+          template: classic
           base: ""
-          config_theme: dark
           plugin_languages: yes
           plugin_languages_ignored: html, css
           plugin_languages_details: percentage
@@ -35,9 +34,8 @@ jobs:
           filename: estatisticas.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: jpguska
-          template: compact
+          template: classic
           base: header, activity, community, repositories
-          config_theme: dark
 
       # 2. Sincroniza com o remoto (os passos acima já pushearam)
       - name: Sincronizar com o remoto
