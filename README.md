@@ -7,7 +7,7 @@ Tenho interesse na interseção entre tecnologia e outras ciências como física
 
 ---
 
-## 📊 GitHub Stats & Linguagens
+## 📊 GitHub Stats
 
 <div align="center">
   <img src="estatisticas.svg" alt="Estatísticas do GitHub" height="180px"/>
