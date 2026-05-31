@@ -34,6 +34,12 @@ Engenharia de computação pela **UTFPR-TD**.
 ## 📂 Portfólio
 
    <!-- START_SECTION:repos -->
-   <!-- END_SECTION:repos -->
+* **[Pong_NEAT](https://github.com/jpguska/Pong_NEAT)**: Sem descrição.
+* **[crud-transporte-gov](https://github.com/jpguska/crud-transporte-gov)**: CRUD de transporte público implementado de duas formas: Sockets TCP com protocolo binário e RMI com Pyro5. Trabalho de Sistemas Distribuídos.
+* **[GLC](https://github.com/jpguska/GLC)**: Sem descrição.
+* **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Sem descrição.
+* **[java-hsm-crypto-examples](https://github.com/jpguska/java-hsm-crypto-examples)**: Sem descrição.
+
+<!-- END_SECTION:repos -->
 ---
 📫 **Como me encontrar:** [[LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-cunha-guska-7378b5168/)] | [[Instagram](https://www.instagram.com/jp.guska/)]
