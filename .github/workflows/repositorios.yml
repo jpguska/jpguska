@@ -15,20 +15,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 1. Gera o gráfico de pizza (linguagens.svg) com o usuário correto!
-      - name: Gerar Gráfico de Linguagens
-        uses: lowlighter/metrics@latest
-        with:
-          filename: linguagens.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: jpguska
-          template: classic
-          base: ""
-          plugin_languages: yes
-          plugin_languages_ignored: html, css
-          plugin_languages_details: percentage
-
-      # 2. Atualiza os Repositórios e os Badges no README via Python
+      # 1. Atualiza o Texto do README com segurança (Sem Regex)
       - name: Atualizar README via Python
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +23,6 @@ jobs:
           import urllib.request
           import urllib.parse
           import json
-          import re
           import os
 
           token = os.environ.get('GITHUB_TOKEN')
@@ -86,40 +72,42 @@ jobs:
                   markdown_badges += f"![{lang}](https://img.shields.io/badge/{safe_lang}-4D4D4D?style=for-the-badge)\n"
           markdown_badges += "\n"
 
-          # --- PARTE 3: INJETAR NO README ---
+          # --- PARTE 3: INJETAR NO README (Método Seguro) ---
+          def replace_section(text, start_tag, end_tag, insertion):
+              start_idx = text.find(start_tag)
+              end_idx = text.find(end_tag)
+              if start_idx != -1 and end_idx != -1:
+                  return text[:start_idx + len(start_tag)] + insertion + text[end_idx:]
+              return text
+
           with open('README.md', 'r', encoding='utf-8') as f:
               content = f.read()
 
-          content = re.sub(
-              r'().*?()',
-              f'\\1{markdown_repos}\\2',
-              content,
-              flags=re.DOTALL
-          )
-
-          content = re.sub(
-              r'().*?()',
-              f'\\1{markdown_badges}\\2',
-              content,
-              flags=re.DOTALL
-          )
+          content = replace_section(content, '', '', markdown_repos)
+          content = replace_section(content, '', '', markdown_badges)
 
           with open('README.md', 'w', encoding='utf-8') as f:
               f.write(content)
         shell: python
-        
-# 3. Salva e sincroniza as alterações
-      - name: Salvar alterações no GitHub
+
+      # 2. Salva APENAS o texto modificado primeiro
+      - name: Commit do Texto
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # 1º: Adiciona e 'salva' (commit) as alterações que o Python fez no README
           git add README.md
-          git commit -m "docs: atualiza portfólio, badges e gráfico dinamicamente" || echo "Sem mudanças"
-          
-          # 2º: Agora que o README está salvo, puxa (pull) a imagem gerada pelo Metrics
-          git pull --rebase
-          
-          # 3º: Envia o pacote completo (README alterado + Imagem nova) para o repositório
+          git commit -m "docs: atualiza portfólio e badges dinamicamente" || echo "Sem mudanças no texto"
           git push
+
+      # 3. Executa a ferramenta de gráficos por último (ela se encarrega de salvar e enviar a imagem sozinha)
+      - name: Gerar Gráfico de Linguagens
+        uses: lowlighter/metrics@latest
+        with:
+          filename: linguagens.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: jpguska
+          template: classic
+          base: ""
+          plugin_languages: yes
+          plugin_languages_ignored: html, css
+          plugin_languages_details: percentage
