@@ -1,10 +1,9 @@
 # Olá! Eu sou João Pedro Cunha Guska 👋
 
-Tenho interesse na interseção entre tecnologia e outras ciências como físia, genética e neurociência. Nas horas vagas, longe dos teclados, sou praticante e estusiasta de artes marciais.
+Tenho interesse na interseção entre tecnologia e outras ciências como física, genética e neurociência. Nas horas vagas, longe dos teclados, sou praticante e entusiasta de artes marciais.
 
-* 🎓 **Engenharia de Computação UTFPR-TD** 
-* 💬 **Pergunte-me sobre:** Java, C/C++ e desenvolvimento de baixo nível.
-* 📫 **Como me encontrar:** [[LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-cunha-guska-7378b5168/)] | [[Instagram](https://www.instagram.com/jp.guska/)]
+* 🎓 **Engenharia de Computação UTFPR-TD**
+* 📫 **Contatos:** [LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-cunha-guska-7378b5168/) | [Instagram](https://www.instagram.com/jp.guska/)
 
 ---
 
@@ -26,8 +25,13 @@ Tenho interesse na interseção entre tecnologia e outras ciências como físia,
 
 ## 💻 Tecnologias e Ferramentas
 
-**Linguagens Principais:**
+**Linguagens:**
+
+<!-- START_SECTION:langs -->
+<!-- END_SECTION:langs -->
+
 **Ambiente, Infraestrutura & Frameworks:**
+
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![WSL](https://img.shields.io/badge/WSL-4D4D4D?style=for-the-badge&logo=windowsterminal&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
