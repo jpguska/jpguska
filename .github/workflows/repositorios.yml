@@ -1,4 +1,4 @@
-name: Atualizar Portfólio e Badges
+name: Atualizar Perfil Completo
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  atualizar-readme:
+  atualizar-tudo:
     runs-on: ubuntu-latest
     permissions:
       contents: write 
@@ -15,6 +15,20 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      # 1. Gera o gráfico de pizza (linguagens.svg) com o usuário correto!
+      - name: Gerar Gráfico de Linguagens
+        uses: lowlighter/metrics@latest
+        with:
+          filename: linguagens.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: jpguska
+          template: classic
+          base: ""
+          plugin_languages: yes
+          plugin_languages_ignored: html, css
+          plugin_languages_details: percentage
+
+      # 2. Atualiza os Repositórios e os Badges no README via Python
       - name: Atualizar README via Python
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -26,7 +40,6 @@ jobs:
           import os
 
           token = os.environ.get('GITHUB_TOKEN')
-          # Busca até 100 repositórios para garantir que vai achar todas as linguagens
           url = "https://api.github.com/users/jpguska/repos?type=owner&sort=updated&per_page=100"
           
           req = urllib.request.Request(url, headers={
@@ -37,7 +50,7 @@ jobs:
           with urllib.request.urlopen(req) as response:
               repos = json.loads(response.read().decode())
 
-          # --- PARTE 1: PORTFÓLIO (Pega apenas os 6 mais recentes) ---
+          # --- PARTE 1: PORTFÓLIO ---
           markdown_repos = "\n"
           recent_repos = [r for r in repos if r['name'].lower() != "jpguska"][:6]
           
@@ -54,7 +67,6 @@ jobs:
               if repo['name'].lower() != "jpguska" and repo.get('language'):
                   languages_found.add(repo['language'])
 
-          # Dicionário de cores e logos para as suas linguagens
           badge_map = {
               "Go": "![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)",
               "Java": "![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)",
@@ -70,7 +82,6 @@ jobs:
               if lang in badge_map:
                   markdown_badges += badge_map[lang] + "\n"
               else:
-                  # Se você usar uma linguagem nova que não está no dicionário, cria um badge genérico
                   safe_lang = urllib.parse.quote(lang)
                   markdown_badges += f"![{lang}](https://img.shields.io/badge/{safe_lang}-4D4D4D?style=for-the-badge)\n"
           markdown_badges += "\n"
@@ -79,17 +90,15 @@ jobs:
           with open('README.md', 'r', encoding='utf-8') as f:
               content = f.read()
 
-          # Injeta repositórios
           content = re.sub(
-              r'(<!-- START_SECTION:repos -->).*?(<!-- END_SECTION:repos -->)',
+              r'().*?()',
               f'\\1{markdown_repos}\\2',
               content,
               flags=re.DOTALL
           )
 
-          # Injeta badges
           content = re.sub(
-              r'(<!-- START_SECTION:badges -->).*?(<!-- END_SECTION:badges -->)',
+              r'().*?()',
               f'\\1{markdown_badges}\\2',
               content,
               flags=re.DOTALL
@@ -99,10 +108,12 @@ jobs:
               f.write(content)
         shell: python
 
+      # 3. Salva o README alterado e o gráfico gerado
       - name: Salvar alterações no GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "docs: atualiza portfólio e badges dinamicamente" || echo "Sem mudanças"
+          # Adiciona tanto o README quanto a imagem gerada
+          git add README.md linguagens.svg
+          git commit -m "docs: atualiza portfólio, badges e gráfico dinamicamente" || echo "Sem mudanças"
           git push
