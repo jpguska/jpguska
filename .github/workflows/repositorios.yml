@@ -107,18 +107,19 @@ jobs:
           with open('README.md', 'w', encoding='utf-8') as f:
               f.write(content)
         shell: python
-
-# 3. Salva apenas o README (a imagem já foi salva pelo Metrics)
+        
+# 3. Salva e sincroniza as alterações
       - name: Salvar alterações no GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Sincroniza a máquina do robô com o GitHub para baixar o linguagens.svg que acabou de ser criado
-          git config pull.rebase true
-          git pull
-          
-          # Adiciona e salva apenas o README.md
+          # 1º: Adiciona e 'salva' (commit) as alterações que o Python fez no README
           git add README.md
           git commit -m "docs: atualiza portfólio, badges e gráfico dinamicamente" || echo "Sem mudanças"
+          
+          # 2º: Agora que o README está salvo, puxa (pull) a imagem gerada pelo Metrics
+          git pull --rebase
+          
+          # 3º: Envia o pacote completo (README alterado + Imagem nova) para o repositório
           git push
