@@ -1,6 +1,6 @@
 # Olá! Eu sou João👋
 
-Gosto de desenvolvimento de baixo nível em Java e C/C++, e me interesso por onde a computação encontra outras ciências — especialmente física, genética e neurociência. Fora do código, treino artes marciais.
+Gosto de desenvolvimento em C/C++, e me interesso por onde a computação encontra outras ciências — especialmente física, genética e neurociência. Fora do código, treino artes marciais.
 
 * 🎓 **Engenharia de Computação UTFPR-TD**
 * 📫 **Contatos:** [LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-cunha-guska-7378b5168/) | [Instagram](https://www.instagram.com/jp.guska/)
