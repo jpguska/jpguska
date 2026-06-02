@@ -46,6 +46,7 @@
 * **[java-hsm-crypto-examples](https://github.com/jpguska/java-hsm-crypto-examples)**: Integração criptográfica com HSMs da Dinamo Networks.
 * **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Compilador da linguagem Chemye++ focado nas etapas de análise léxica e sintática. Tem como base a linguagem C++.
 * **[crud-transporte-gov](https://github.com/jpguska/crud-transporte-gov)**: CRUD de transporte público implementado de duas formas: Sockets TCP com protocolo binário e RMI com Pyro5. Trabalho de Sistemas Distribuídos.
+* **[data-structures-and-algorithms-in-c](https://github.com/jpguska/data-structures-and-algorithms-in-c)**: Coleção de Estruturas de Dados e Algoritmos implementados em C. Inclui estruturas clássicas, algoritmos de ordenação, grafos e fundamentos de alocação de memória.
 * **[GLC](https://github.com/jpguska/GLC)**: Sem descrição.
 
 <!-- END_SECTION:repos -->
