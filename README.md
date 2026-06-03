@@ -18,6 +18,7 @@
 **Linguagens:**
 
 <!-- START_SECTION:langs -->
+![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
@@ -41,13 +42,12 @@
 ## 📂 Portfólio
 
 <!-- START_SECTION:repos -->
+* **[data-structures-and-algorithms-in-c](https://github.com/jpguska/data-structures-and-algorithms-in-c)**: Coleção de Estruturas de Dados e Algoritmos implementados em C. Inclui estruturas clássicas, algoritmos de ordenação, grafos e fundamentos de alocação de memória.
+* **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Compilador da linguagem Chemye++ focado nas etapas de análise léxica e sintática. Tem como base a linguagem C++.
 * **[pong-neat](https://github.com/jpguska/pong-neat)**: IA que joga Pong evoluída via NEAT (NeuroEvolution of Augmenting Topologies). Entrega da 2ª Competição de IA PPCI 2025.
 * **[cryptopals-challenges](https://github.com/jpguska/cryptopals-challenges)**: Soluções para os desafios de criptografia do Cryptopals.
 * **[java-hsm-crypto-examples](https://github.com/jpguska/java-hsm-crypto-examples)**: Integração criptográfica com HSMs da Dinamo Networks.
-* **[chemye-compiler](https://github.com/jpguska/chemye-compiler)**: Compilador da linguagem Chemye++ focado nas etapas de análise léxica e sintática. Tem como base a linguagem C++.
 * **[crud-transporte-gov](https://github.com/jpguska/crud-transporte-gov)**: CRUD de transporte público implementado de duas formas: Sockets TCP com protocolo binário e RMI com Pyro5. Trabalho de Sistemas Distribuídos.
-* **[data-structures-and-algorithms-in-c](https://github.com/jpguska/data-structures-and-algorithms-in-c)**: Coleção de Estruturas de Dados e Algoritmos implementados em C. Inclui estruturas clássicas, algoritmos de ordenação, grafos e fundamentos de alocação de memória.
-* **[GLC](https://github.com/jpguska/GLC)**: Sem descrição.
 
 <!-- END_SECTION:repos -->
 
